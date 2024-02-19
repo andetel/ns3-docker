@@ -1,0 +1,7 @@
+services:
+  ns3:
+    container_name: ns3
+    build:
+      context: .
+      dockerfile: Dockerfile
+    
