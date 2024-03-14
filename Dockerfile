@@ -75,9 +75,9 @@ WORKDIR /usr
 RUN wget https://www.nsnam.org/release/ns-allinone-${NS3_VERSION}.tar.bz2  && \
     tar -jxvf ns-allinone-${NS3_VERSION}.tar.bz2
 
-RUN cd ns-allinone-$NS3_VERSION && ./build.py --enable-examples --enable-tests
+RUN cd ns-allinone-${NS3_VERSION} && ./build.py --enable-examples --enable-tests
 
-RUN ln -s /usr/ns-allinone-$NS3_VERSION/ns-$NS3_VERSION/ /usr/ns3/
+RUN ln -s /usr/ns-allinone-${NS3_VERSION}/ns-${NS3_VERSION}/ /usr/ns3/
 
 RUN apt-get clean && \
     rm -rf /var/lib/apt && \
@@ -88,6 +88,10 @@ RUN cd /usr/ns-allinone-${NS3_VERSION}/netanim-3.108/ && \
     qmake NetAnim.pro && \
     make
 
+WORKDIR /usr/ns-allinone-${NS3_VERSION}/ns-${NS3_VERSION}
+
+# If any other files is required inside the docker container, add more lines as below, changing the filenames and paths as required.
+# COPY {filename/path to file on host} {path to where file should be copied to in the constainer}
 COPY IKT443_NS3_codes.cc /usr/ns-allinone-${NS3_VERSION}/ns-${NS3_VERSION}/scratch/
 COPY myapp.h /usr/ns-allinone-${NS3_VERSION}/ns-${NS3_VERSION}/scratch/
 
