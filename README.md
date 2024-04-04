@@ -51,6 +51,9 @@ docker cp container:src_path dest_path
 - src_path: the path on the container of the file you want to copy
 - dest_path: the path on your local machine of the directory you want to copy files to
 
+## Another possible way of accessing the container
+Another possible way to access the container is to first download Visual Studio Code from the [official website](https://code.visualstudio.com/). Then install the Docker extension from Microsoft. This will allow you to connect to the Docker container from within Visual Studio Code directly, and edit files, download files to your host machine and run terminal commands in the container.
+
 ## Additional information
 
 ### Viewing additonal information about containers
